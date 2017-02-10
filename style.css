@@ -1,0 +1,120 @@
+body {
+  margin: auto;
+  background: rgb(244, 239, 213);
+  font-family: "Lucida Grande", sans-serif;
+}
+
+/* Header is fixed to the top of the page and full width */
+header {
+  width: 100%;
+  height: 75px;
+  background-color: rgb(12, 102, 168);
+  margin-bottom: 25px;
+  position: fixed;
+  top: 0;
+  border-top: 10px solid rgb(82, 132, 195);
+}
+
+/* Body headings are blue */
+h1, h2 {
+  color: rgb(5, 93, 154);
+}
+
+/* Insert round arrow image before each subheading */
+h2::before {
+  content: url(images/h2.gif);
+  padding-right: 5px;
+}
+
+/* Make the page header white, put the logo in front, and line up with page content */
+header h1 {
+  color: white;
+  margin-left: 250px;
+  background-image: url(images/logo.gif);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  padding-left: 50px;
+}
+
+/* Wrapper to contain page content */
+#wrapper {
+  width: 760px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+/* Column for nav and image */
+#leftcolumn {
+  width: 210px;
+  float: left;
+}
+
+/* Column for main content */
+#rightcolumn {
+  margin-left: 210px;
+  border-left: 1px solid grey;
+  padding-left: 15px;
+  margin-bottom: 200px;
+}
+
+#leftcolumn nav {
+  background-image: url(images/nav_side.jpg);
+  background-size: contain;
+  background-repeat: repeat-y;
+  margin-right: 19px;
+}
+
+nav a {
+  display: list-item;
+  list-style: none;
+  color: rgb(5, 93, 154);
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid grey;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:last-child {
+  border: none;
+  margin-bottom: 0px;
+}
+
+/* Insert arrow image before nav links */
+nav a::before {
+  content: url(images/arrow.gif);
+  padding-right: 5px;
+}
+
+a:hover {
+  color: black;
+}
+
+#nav_btm {
+  margin-bottom: 15px;
+  width: 191px;
+}
+
+footer {
+  height: 150px;
+  background-color: rgb(235, 225, 194);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Center only the copyright info */
+footer p:first-child {
+  font-size: .75em;
+  padding-top: 30px;
+  text-align: center;
+}
+
+/* Display validation links in line with #leftcolumn's left margin */
+#w3c-container {
+  width: 760px;
+  margin: auto;
+}
