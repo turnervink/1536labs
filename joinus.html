@@ -4,6 +4,7 @@
   <title>CST Web Creations - Join Us!</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
 
@@ -19,7 +20,7 @@
         <a href="services.html">Services</a>
         <a href="#">Portfolio</a>
         <a href="joinus.html">Join us</a>
-        <a href="#">Contact us/a>
+        <a href="#">Contact us</a>
       </nav>
       <img id="nav_btm" src="images/nav_btm.jpg" alt="" />
 
@@ -27,7 +28,64 @@
     </div>
 
     <div id="rightcolumn">
+      <h1>Who we are</h1>
+      <p>
+        We are a group of CST, past and present, offering our website creation services
+        to non-profit organizations in the Lower Mainland. We work in teams made up of experts
+        in design, development, and project management.
+      </p>
+      <img src="images/hr.gif" alt="" />
 
+      <h2>Join us now!</h2>
+      <p>
+        To join this dynamic group of web developers, fill in the application below and
+        you will be contacted shortly.
+      </p>
+
+      <form action="http://webdevfoundations.net/scripts/formdemo.asp" method="post">
+        <label required for="positon">Which position are you applying for?</label><br>
+          <select required name="position" id="position">
+            <option></option>
+            <option value="project_manager">Project Manager</option>
+            <option value="graphic_designer">Graphic Designer</option>
+            <option value="web_dev">Web Developer</option>
+            <option value="database_admin">Database Administrator</option>
+          </select><br><br>
+
+        <label required for="credentials">Passed Comp 1536?</label><br>
+          <input required type="radio" name="credentials" id="credentials" value="true">Yes</input><br>
+          <input type="radio" name="credentials" id="credentials" value="false">No</input><br><br>
+
+        <label required for="start_date">Earliest start date?</label><br>
+          <input required type="date" name="start_date" id="start_date" /><br><br>
+
+        <label for="portfolio_url">Portfolio URL</label><br>
+          <input type="url" name="portfolio_url" id="portfolio_url" size="50" placeholder="http://" /><br><br>
+
+        <label for="resume_file">Attach resume</label><br>
+          <input type="file" name="resume_file" id="resume_file" /><br><br>
+
+        <label required for="first_name">Name</label><br>
+          <input required type="name" name="first_name" id="first_name" size="10" placeholder="First"/>
+          <input required type="name" name="last_name" id="last_name" size="10" placeholder="Last" />
+        </label><br><br>
+
+        <label required for="email">Email</label><br>
+          <input required type="email" name="email" id="email" size="50" />
+        </label><br><br>
+
+        <label required for="area_code">Phone</label><br>
+          <input required type="text" name="area_code" id="area_code" size="3" />
+          <input required type="text" name="phone_number" id="phone_number" size="3" />
+          <input required type="text" name="phone_number" id="phone_number" size="4" /><br><br>
+
+        <label for="more_info">Any additional information for us</label><br>
+          <textarea rows="10" cols="50" name="more_info" id="more_info"></textarea><br><br>
+
+        <label>
+          <input type="Submit" value="Submit">
+        </label>
+      </form>
     </div>
 
   </div>
