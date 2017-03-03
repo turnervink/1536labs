@@ -21,3 +21,7 @@ tr:nth-child(odd) {
   margin-left: 30px;
   margin-top: 15px;
 }
+
+#video-embed iframe {
+  border: none;
+}

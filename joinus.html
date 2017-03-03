@@ -57,33 +57,39 @@
           <input type="radio" name="credentials" id="credentials" value="false">No</input><br><br>
 
         <label required for="start_date">Earliest start date?</label><br>
-          <input required type="date" name="start_date" id="start_date" /><br><br>
+          <input type="text" name="start_date" id="start_date" size="3"> /
+          <input type="text" name="start_date" id="start_date" size="3"> /
+          <input type="text" name="start_date" id="start_date" size="4"><br>
+          <p id="date_format">MM <span>DD</span> <span>YYYY</span></p><br>
 
         <label for="portfolio_url">Portfolio URL</label><br>
           <input type="url" name="portfolio_url" id="portfolio_url" size="50" placeholder="http://" /><br><br>
 
         <label for="resume_file">Attach resume</label><br>
-          <input type="file" name="resume_file" id="resume_file" /><br><br>
+          <input type="file" name="resume_file" id="resume_file" /><br>
+          <p id="file_format">PDF or Word document only</p><br>
 
         <label required for="first_name">Name</label><br>
-          <input required type="name" name="first_name" id="first_name" size="10" placeholder="First"/>
-          <input required type="name" name="last_name" id="last_name" size="10" placeholder="Last" />
-        </label><br><br>
+          <input required type="name" name="first_name" id="first_name" size="10"/>
+          <input required type="name" name="last_name" id="last_name" size="20"/>
+        </label><br>
+        <p id="name_format">First <span>Last</span></p><br>
 
         <label required for="email">Email</label><br>
-          <input required type="email" name="email" id="email" size="50" />
+          <input required type="email" name="email" id="email" placeholder="name@domain.com" size="50" />
         </label><br><br>
 
         <label required for="area_code">Phone</label><br>
-          <input required type="text" name="area_code" id="area_code" size="3" />
           <input required type="text" name="phone_number" id="phone_number" size="3" />
-          <input required type="text" name="phone_number" id="phone_number" size="4" /><br><br>
+          <input required type="text" name="phone_number" id="phone_number" size="3" />
+          <input required type="text" name="phone_number" id="phone_number" size="4" /><br>
+          <p id="phone_format">(***) <span>***</span> <span>&nbsp;****</span></p><br>
 
-        <label for="more_info">Any additional information for us</label><br>
+        <label id="more_info" for="more_info">Any additional information for us</label><br>
           <textarea rows="10" cols="50" name="more_info" id="more_info"></textarea><br><br>
 
         <label>
-          <input type="Submit" value="Submit">
+          <input type="submit" value="Submit">
         </label>
       </form>
     </div>

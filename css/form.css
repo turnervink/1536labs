@@ -2,3 +2,40 @@ label[required]::after {
   color: red;
   content: " *";
 }
+
+#date_format {
+  font-size: 0.7em;
+  margin: 1px 0 1px 0;
+}
+
+#date_format span {
+  margin-left: 27px;
+}
+
+#file_format {
+  font-size: 0.7em;
+  margin: 1px 0 1px 0;
+}
+
+#name_format {
+  font-size: 0.7em;
+  margin: 1px 0 1px 0;
+}
+
+#name_format span {
+  margin-left: 50px;
+}
+
+#phone_format {
+  font-size: 0.7em;
+  margin: 1px 0 1px 0;
+}
+
+#phone_format span {
+  margin-left: 10px;
+}
+
+#more_info {
+  font-size: 0.8em;
+  color: rgb(12, 102, 168);
+}
