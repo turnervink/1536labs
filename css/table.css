@@ -1,0 +1,27 @@
+table {
+  border: 1px solid black;
+  margin-left: 30px;
+  border-collapse: collapse;
+}
+
+th {
+  width: 150px;
+  padding: 10px 15px 10px 15px;
+}
+
+td {
+  padding: 10px 15px 10px 15px;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+#video-embed {
+  margin-left: 30px;
+  margin-top: 15px;
+}
+
+#video-embed iframe {
+  border: none;
+}

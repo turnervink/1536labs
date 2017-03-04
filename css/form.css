@@ -1,0 +1,20 @@
+/* Add a "*" to all required form elements */
+label.required::after {
+  color: red;
+  content: " *";
+}
+
+/* Use tables to keep form subtitles aligned with their inputs */
+td {
+  font-size: 0.75em;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* Style the label on the textarea */
+#more_info_label {
+  font-size: 14px;
+  color: rgb(12, 102, 168);
+}

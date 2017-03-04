@@ -4,6 +4,7 @@
   <title>CST Web Creations - Join Us!</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/form.css">
 </head>
 <body>
 
@@ -19,7 +20,7 @@
         <a href="services.html">Services</a>
         <a href="#">Portfolio</a>
         <a href="joinus.html">Join us</a>
-        <a href="#">Contact us/a>
+        <a href="#">Contact us</a>
       </nav>
       <img id="nav_btm" src="images/nav_btm.jpg" alt="" />
 
@@ -27,7 +28,108 @@
     </div>
 
     <div id="rightcolumn">
+      <h1>Who we are</h1>
+      <p>
+        We are a group of CST, past and present, offering our website creation services
+        to non-profit organizations in the Lower Mainland. We work in teams made up of experts
+        in design, development, and project management.
+      </p>
+      <img src="images/hr.gif" alt="" />
 
+      <h2>Join us now!</h2>
+      <p>
+        To join this dynamic group of web developers, fill in the application below and
+        you will be contacted shortly.
+      </p>
+
+      <form action="http://webdevfoundations.net/scripts/formdemo.asp" method="post">
+
+        <!-- Position -->
+        <label class="required" for="position">Which position are you applying for?</label><br>
+        <select required name="position" id="position">
+          <option value="">&nbsp;</option>
+          <option value="project_manager">Project Manager</option>
+          <option value="graphic_designer">Graphic Designer</option>
+          <option value="web_dev">Web Developer</option>
+          <option value="database_admin">Database Administrator</option>
+        </select><br><br>
+
+        <!-- Credentials -->
+        <label class="required" for="credentialsTrue">Passed Comp 1536?</label><br>
+        <input required checked type="radio" name="credentials" id="credentialsTrue" value="true">Yes<br>
+        <input type="radio" name="credentials" id="credentialsFalse" value="false">No<br><br>
+
+        <!-- Start date -->
+        <label class="required" for="start_date1">Earliest start date?</label><br>
+        <table>
+          <tr>
+            <td><input type="text" name="start_date" id="start_date1" size="3">&nbsp;/</td>
+            <td><input type="text" name="start_date" id="start_date2" size="3">&nbsp;/</td>
+            <td><input type="text" name="start_date" id="start_date3" size="4"></td>
+          </tr>
+          <tr>
+            <td><label>DD</label></td>
+            <td><label>MM</label></td>
+            <td><label>YYYY</label></td>
+          </tr>
+        </table><br>
+
+        <!-- URL -->
+        <label for="portfolio_url">Portfolio URL</label><br>
+        <input type="text" name="portfolio_url" id="portfolio_url" size="50" /><br><br>
+
+        <!-- Resume -->
+        <label for="resume_file">Attach resume</label><br>
+        <table>
+          <tr>
+            <td><input type="file" name="resume_file" id="resume_file" /></td>
+          </tr>
+          <tr>
+            <td><label>PDF or Word document only</label></td>
+          </tr>
+        </table><br>
+
+        <!-- Name -->
+        <label class="required" for="first_name">Name</label><br>
+        <table>
+          <tr>
+            <td><input required type="text" name="first_name" id="first_name" size="10"/></td>
+            <td><input required type="text" name="last_name" id="last_name" size="20"/></td>
+          </tr>
+          <tr>
+            <td><label for="first_name">First</label></td>
+            <td><label for="last_name">Last</label></td>
+          </tr>
+        </table><br>
+
+        <!-- Email -->
+        <label class="required" for="email">Email</label><br>
+        <input required type="text" name="email" id="email" size="50" /><br><br>
+
+        <!-- Phone number -->
+        <label class="required" for="phone_number1">Phone</label><br>
+        <table>
+          <tr>
+            <td><input required type="text" name="phone_number" id="phone_number1" size="3" /></td>
+            <td><input required type="text" name="phone_number" id="phone_number2" size="3" /></td>
+            <td><input required type="text" name="phone_number" id="phone_number3" size="4" /></td>
+          </tr>
+          <tr>
+            <td><label for="phone_number1">(***)</label></td>
+            <td><label for="phone_number2">***</label></td>
+            <td><label for="phone_number3">****</label></td>
+          </tr>
+        </table><br>
+
+        <!-- More info -->
+        <label id="more_info_label" for="more_info">Any additional information for us</label><br>
+        <textarea rows="10" cols="50" name="more_info" id="more_info"></textarea><br><br>
+
+        <!-- Submit button -->
+        <label>
+          <input type="submit" value="Submit">
+        </label>
+      </form>
     </div>
 
   </div>
