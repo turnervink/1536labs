@@ -45,9 +45,9 @@
       <form action="http://webdevfoundations.net/scripts/formdemo.asp" method="post">
 
         <!-- Position -->
-        <label required for="positon">Which position are you applying for?</label><br>
+        <label class="required" for="position">Which position are you applying for?</label><br>
         <select required name="position" id="position">
-          <option></option>
+          <option value="">&nbsp;</option>
           <option value="project_manager">Project Manager</option>
           <option value="graphic_designer">Graphic Designer</option>
           <option value="web_dev">Web Developer</option>
@@ -55,17 +55,17 @@
         </select><br><br>
 
         <!-- Credentials -->
-        <label required for="credentials">Passed Comp 1536?</label><br>
-        <input required checked type="radio" name="credentials" id="credentials" value="true">Yes</input><br>
-        <input type="radio" name="credentials" id="credentials" value="false">No</input><br><br>
+        <label class="required" for="credentialsTrue">Passed Comp 1536?</label><br>
+        <input required checked type="radio" name="credentials" id="credentialsTrue" value="true">Yes<br>
+        <input type="radio" name="credentials" id="credentialsFalse" value="false">No<br><br>
 
         <!-- Start date -->
-        <label required for="start_date">Earliest start date?</label><br>
+        <label class="required" for="start_date1">Earliest start date?</label><br>
         <table>
           <tr>
-            <td><input type="text" name="start_date" id="start_date" size="3">&nbsp;/</td>
-            <td><input type="text" name="start_date" id="start_date" size="3">&nbsp;/</td>
-            <td><input type="text" name="start_date" id="start_date" size="4"></td>
+            <td><input type="text" name="start_date" id="start_date1" size="3">&nbsp;/</td>
+            <td><input type="text" name="start_date" id="start_date2" size="3">&nbsp;/</td>
+            <td><input type="text" name="start_date" id="start_date3" size="4"></td>
           </tr>
           <tr>
             <td><label>DD</label></td>
@@ -90,11 +90,11 @@
         </table><br>
 
         <!-- Name -->
-        <label required for="first_name">Name</label><br>
+        <label class="required" for="first_name">Name</label><br>
         <table>
           <tr>
-            <td><input required type="name" name="first_name" id="first_name" size="10"/></td>
-            <td><input required type="name" name="last_name" id="last_name" size="20"/></td>
+            <td><input required type="text" name="first_name" id="first_name" size="10"/></td>
+            <td><input required type="text" name="last_name" id="last_name" size="20"/></td>
           </tr>
           <tr>
             <td><label for="first_name">First</label></td>
@@ -103,26 +103,26 @@
         </table><br>
 
         <!-- Email -->
-        <label required for="email">Email</label><br>
+        <label class="required" for="email">Email</label><br>
         <input required type="text" name="email" id="email" size="50" /><br><br>
 
         <!-- Phone number -->
-        <label required for="area_code">Phone</label><br>
+        <label class="required" for="phone_number1">Phone</label><br>
         <table>
           <tr>
-            <td><input required type="text" name="phone_number" id="phone_number" size="3" /></td>
-            <td><input required type="text" name="phone_number" id="phone_number" size="3" /></td>
-            <td><input required type="text" name="phone_number" id="phone_number" size="4" /></td>
+            <td><input required type="text" name="phone_number" id="phone_number1" size="3" /></td>
+            <td><input required type="text" name="phone_number" id="phone_number2" size="3" /></td>
+            <td><input required type="text" name="phone_number" id="phone_number3" size="4" /></td>
           </tr>
           <tr>
-            <td><label for="phone_number">(***)</label></td>
-            <td><label for="phone_number">***</label></td>
-            <td><label for="phone_number">****</label></td>
+            <td><label for="phone_number1">(***)</label></td>
+            <td><label for="phone_number2">***</label></td>
+            <td><label for="phone_number3">****</label></td>
           </tr>
         </table><br>
 
         <!-- More info -->
-        <label id="more_info" for="more_info"><span>Any additional information for us</span></label><br>
+        <label id="more_info_label" for="more_info">Any additional information for us</label><br>
         <textarea rows="10" cols="50" name="more_info" id="more_info"></textarea><br><br>
 
         <!-- Submit button -->
