@@ -43,51 +43,89 @@
       </p>
 
       <form action="http://webdevfoundations.net/scripts/formdemo.asp" method="post">
+
+        <!-- Position -->
         <label required for="positon">Which position are you applying for?</label><br>
-          <select required name="position" id="position">
-            <option></option>
-            <option value="project_manager">Project Manager</option>
-            <option value="graphic_designer">Graphic Designer</option>
-            <option value="web_dev">Web Developer</option>
-            <option value="database_admin">Database Administrator</option>
-          </select><br><br>
+        <select required name="position" id="position">
+          <option></option>
+          <option value="project_manager">Project Manager</option>
+          <option value="graphic_designer">Graphic Designer</option>
+          <option value="web_dev">Web Developer</option>
+          <option value="database_admin">Database Administrator</option>
+        </select><br><br>
 
+        <!-- Credentials -->
         <label required for="credentials">Passed Comp 1536?</label><br>
-          <input required type="radio" name="credentials" id="credentials" value="true">Yes</input><br>
-          <input type="radio" name="credentials" id="credentials" value="false">No</input><br><br>
+        <input required checked type="radio" name="credentials" id="credentials" value="true">Yes</input><br>
+        <input type="radio" name="credentials" id="credentials" value="false">No</input><br><br>
 
+        <!-- Start date -->
         <label required for="start_date">Earliest start date?</label><br>
-          <input type="text" name="start_date" id="start_date" size="3"> /
-          <input type="text" name="start_date" id="start_date" size="3"> /
-          <input type="text" name="start_date" id="start_date" size="4"><br>
-          <p id="date_format">MM <span>DD</span> <span>YYYY</span></p><br>
+        <table>
+          <tr>
+            <td><input type="text" name="start_date" id="start_date" size="3">&nbsp;/</td>
+            <td><input type="text" name="start_date" id="start_date" size="3">&nbsp;/</td>
+            <td><input type="text" name="start_date" id="start_date" size="4"></td>
+          </tr>
+          <tr>
+            <td><label>DD</label></td>
+            <td><label>MM</label></td>
+            <td><label>YYYY</label></td>
+          </tr>
+        </table><br>
 
+        <!-- URL -->
         <label for="portfolio_url">Portfolio URL</label><br>
-          <input type="text" name="portfolio_url" id="portfolio_url" size="50" placeholder="http://" /><br><br>
+        <input type="text" name="portfolio_url" id="portfolio_url" size="50" /><br><br>
 
+        <!-- Resume -->
         <label for="resume_file">Attach resume</label><br>
-          <input type="file" name="resume_file" id="resume_file" /><br>
-          <p id="file_format">PDF or Word document only</p><br>
+        <table>
+          <tr>
+            <td><input type="file" name="resume_file" id="resume_file" /></td>
+          </tr>
+          <tr>
+            <td><label>PDF or Word document only</label></td>
+          </tr>
+        </table><br>
 
+        <!-- Name -->
         <label required for="first_name">Name</label><br>
-          <input required type="name" name="first_name" id="first_name" size="10"/>
-          <input required type="name" name="last_name" id="last_name" size="20"/>
-        </label><br>
-        <p id="name_format">First <span>Last</span></p><br>
+        <table>
+          <tr>
+            <td><input required type="name" name="first_name" id="first_name" size="10"/></td>
+            <td><input required type="name" name="last_name" id="last_name" size="20"/></td>
+          </tr>
+          <tr>
+            <td><label for="first_name">First</label></td>
+            <td><label for="last_name">Last</label></td>
+          </tr>
+        </table><br>
 
+        <!-- Email -->
         <label required for="email">Email</label><br>
-          <input required type="type" name="email" id="email" placeholder="name@domain.com" size="50" />
-        </label><br><br>
+        <input required type="text" name="email" id="email" size="50" /><br><br>
 
+        <!-- Phone number -->
         <label required for="area_code">Phone</label><br>
-          <input required type="text" name="phone_number" id="phone_number" size="3" />
-          <input required type="text" name="phone_number" id="phone_number" size="3" />
-          <input required type="text" name="phone_number" id="phone_number" size="4" /><br>
-          <p id="phone_format">(***) <span>***</span> <span>&nbsp;****</span></p><br>
+        <table>
+          <tr>
+            <td><input required type="text" name="phone_number" id="phone_number" size="3" /></td>
+            <td><input required type="text" name="phone_number" id="phone_number" size="3" /></td>
+            <td><input required type="text" name="phone_number" id="phone_number" size="4" /></td>
+          </tr>
+          <tr>
+            <td><label for="phone_number">(***)</label></td>
+            <td><label for="phone_number">***</label></td>
+            <td><label for="phone_number">****</label></td>
+          </tr>
+        </table><br>
 
-        <label id="more_info" for="more_info">Any additional information for us</label><br>
-          <textarea rows="10" cols="50" name="more_info" id="more_info"></textarea><br><br>
+        <!-- More info -->
+        <label id="more_info" for="more_info"><span>Any additional information for us</span></label><br>
+        <textarea rows="10" cols="50" name="more_info" id="more_info"></textarea><br><br>
 
+        <!-- Submit button -->
         <label>
           <input type="submit" value="Submit">
         </label>

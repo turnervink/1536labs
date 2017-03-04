@@ -1,41 +1,20 @@
+/* Add a "*" to all required form elements */
 label[required]::after {
   color: red;
   content: " *";
 }
 
-#date_format {
-  font-size: 10px;
-  margin: 1px 0 1px 0;
+/* Use tables to keep form subtitles aligned with their inputs */
+td {
+  font-size: 0.75em;
 }
 
-#date_format span {
-  margin-left: 29px;
+table {
+  border-collapse: collapse;
 }
 
-#file_format {
-  font-size: 12px;
-  margin: 1px 0 1px 0;
-}
-
-#name_format {
-  font-size: 12px;
-  margin: 1px 0 1px 0;
-}
-
-#name_format span {
-  margin-left: 50px;
-}
-
-#phone_format {
-  font-size: 12px;
-  margin: 1px 0 1px 0;
-}
-
-#phone_format span {
-  margin-left: 8px;
-}
-
-#more_info {
+/* Style the label on the textarea */
+#more_info span {
   font-size: 14px;
   color: rgb(12, 102, 168);
 }
