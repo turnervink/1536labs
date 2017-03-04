@@ -1,5 +1,5 @@
 /* Add a "*" to all required form elements */
-label[required]::after {
+label.required::after {
   color: red;
   content: " *";
 }
@@ -14,7 +14,7 @@ table {
 }
 
 /* Style the label on the textarea */
-#more_info span {
+#more_info_label {
   font-size: 14px;
   color: rgb(12, 102, 168);
 }
