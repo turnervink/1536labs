@@ -7,14 +7,90 @@
   <link rel="stylesheet" href="css/form.css">
 
   <script>
+    // Helper function
     function $(id) {
-      var element = document.getElementById(element);
-      
+      var element = document.getElementById(id);
+
       if (element == null) {
         alert("Error: " + element + " does not exist!");
       }
 
       return element;
+    }
+
+    // Job position
+    function testPositionValid(id) {
+      return ($(id).selectedIndex != 0);
+    }
+
+    function warnPositionValid(id) {
+      if (!testPositionValid(id)) {
+        alert("You must select a position.");
+      }
+    }
+
+    // Passed COMP 1536
+    function testPassedCourseValid(id) {
+      if ($(id).value == "true") {
+        return true;
+      }
+
+      return false;
+    }
+
+    function warnPassedCourseValid(id) {
+      if (!testPassedCourseValid(id)) {
+        alert("Please pass COMP 1536 before applying.");
+      }
+    }
+
+    // Earliest start date
+    function testDateValid(id) {
+      if ($(id).value != null) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function warnDateValid(id) {
+      if (testDateValid(id)) {
+        var value = $(id).value;
+
+        if (id == "txtStartDate_0") {
+          if (!(value >= 1 && value <= 31)) { // Make sure day is valid
+            alert("Please enter a valid day");
+          }
+        } else if (id == "txtStartDate_1") {
+          if (!(value >= 1 && value <= 12)) { // Make sure month is valid
+            alert("Please enter a valid month");
+          }
+        } else if (id == "txtStartDate_2") {
+          if (!(value >= 2017 && date <= 2999)) { // Make sure year is valid
+            alert("Please enter a valid year");
+          }
+        }
+      }
+    }
+
+    // Resume file
+    function testResumeFile(id) {
+      if ($(id).value != null) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function warnResumeFile(id) {
+      if (testResumeFile(id)) {
+        var fileName = $(id).value;
+        fileName = fileName.substring(fileName.length - 3); // Get the file extension
+
+        if (!(fileName == "doc" || fileName == "docx" || fileName == "pdf")) {
+          alert("Please upload a Word document or PDF for your resume.");
+        }
+      }
     }
   </script>
 </head>
@@ -58,7 +134,7 @@
 
         <!-- Position -->
         <label class="required" for="selPosition">Which position are you applying for?</label><br>
-        <select required name="selPosition" id="selPosition">
+        <select required name="selPosition" id="selPosition" onchange="warnPositionValid('selPosition')">
           <option value="">&nbsp;</option>
           <option value="project_manager">Project Manager</option>
           <option value="graphic_designer">Graphic Designer</option>
@@ -68,16 +144,16 @@
 
         <!-- Credentials -->
         <label class="required" for="radPassedWeb_0">Passed Comp 1536?</label><br>
-        <input required checked type="radio" name="radPassedWeb_0" id="radPassedWeb_0" value="true">Yes<br>
-        <input type="radio" name="radPassedWeb_1" id="radPassedWeb_1" value="false">No<br><br>
+        <input required checked type="radio" name="radPassedWeb" id="radPassedWeb_0" value="true" onchange="warnPassedCourseValid('radPassedWeb_0')">Yes<br>
+        <input type="radio" name="radPassedWeb" id="radPassedWeb_1" value="false" onchange="warnPassedCourseValid('radPassedWeb_1')">No<br><br>
 
         <!-- Start date -->
         <label class="required" for="txtStartDate_0">Earliest start date?</label><br>
         <table>
           <tr>
-            <td><input type="text" name="txtStartDate_0" id="txtStartDate_0" size="3">&nbsp;/</td>
-            <td><input type="text" name="txtStartDate_1" id="txtStartDate_1" size="3">&nbsp;/</td>
-            <td><input type="text" name="txtStartDate_2" id="txtStartDate_2" size="4"></td>
+            <td><input type="text" name="txtStartDate_0" id="txtStartDate_0" size="3" onchange="warnDateValid('txtStartDate_0')">&nbsp;/</td>
+            <td><input type="text" name="txtStartDate_1" id="txtStartDate_1" size="3" onchange="warnDateValid('txtStartDate_1')">&nbsp;/</td>
+            <td><input type="text" name="txtStartDate_2" id="txtStartDate_2" size="4" onchange="warnDateValid('txtStartDate_2')"></td>
           </tr>
           <tr>
             <td><label>DD</label></td>
@@ -94,7 +170,7 @@
         <label for="filResume">Attach resume</label><br>
         <table>
           <tr>
-            <td><input type="file" name="filResume" id="filResume" /></td>
+            <td><input type="file" name="filResume" id="filResume" onchange="warnResumeFile('filResume')"/></td>
           </tr>
           <tr>
             <td><label>PDF or Word document only</label></td>
