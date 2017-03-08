@@ -46,7 +46,7 @@
 
     // Earliest start date
     function testDateValid(id) {
-      if ($(id).value != null) {
+      if ($(id).value.length > 0) {
         return true;
       }
 
@@ -66,7 +66,7 @@
             alert("Please enter a valid month");
           }
         } else if (id == "txtStartDate_2") {
-          if (!(value >= 2017 && date <= 2999)) { // Make sure year is valid
+          if (!(value >= 2017 && value <= 2999)) { // Make sure year is valid
             alert("Please enter a valid year");
           }
         }
@@ -89,6 +89,66 @@
 
         if (!(fileName == "doc" || fileName == "docx" || fileName == "pdf")) {
           alert("Please upload a Word document or PDF for your resume.");
+        }
+      }
+    }
+
+    // First and last name
+    function testName(id) {
+      if ($(id).value.length > 0) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function warnName(id) {
+      if (!testName(id)) {
+        alert("Please fill in your first and last name.");
+      }
+    }
+
+    // Email
+    function testEmail(id) {
+      if ($(id).value.length > 0) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function warnEmail(id) {
+      if (!testEmail(id)) {
+        alert("Please fill in your email.");
+      }
+    }
+
+    // Phone
+
+    function testPhoneValid(id) {
+      if ($(id).value.length > 0) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function warnPhone(id) {
+      if (testPhoneValid(id)) {
+        var value = $(id).value;
+
+        if (id == "txtPhone_0") {
+          if (!(value >= 100 && value <= 999)) { // Make sure day is valid
+            alert("Please enter a valid area code");
+          }
+        } else if (id == "txtPhone_1") {
+          if (!(value >= 100 && value <= 999)) { // Make sure month is valid
+            alert("Please enter a valid phone number");
+          }
+        } else if (id == "txtPhone_2") {
+          if (!(value >= 1000 && value <= 9999)) { // Make sure year is valid
+            alert("Please enter a valid phone number");
+          }
         }
       }
     }
@@ -181,8 +241,8 @@
         <label class="required" for="txtFirstName">Name</label><br>
         <table>
           <tr>
-            <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10"/></td>
-            <td><input required type="text" name="txtLastName" id="txtLastName" size="20"/></td>
+            <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10" onchange="warnName('txtFirstName')"/></td>
+            <td><input required type="text" name="txtLastName" id="txtLastName" size="20" onchange="warnName('txtLastName')"/></td>
           </tr>
           <tr>
             <td><label for="txtFirstName">First</label></td>
@@ -198,9 +258,9 @@
         <label class="required" for="txtPhone_0">Phone</label><br>
         <table>
           <tr>
-            <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3" /></td>
-            <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3" /></td>
-            <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4" /></td>
+            <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3" onchange="warnPhone('txtPhone_0')"/></td>
+            <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3" onchange="warnPhone('txtPhone_1')"/></td>
+            <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4" onchange="warnPhone('txtPhone_2')"/></td>
           </tr>
           <tr>
             <td><label for="txtPhone_0">(###)</label></td>
