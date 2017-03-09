@@ -74,7 +74,7 @@
     }
 
     // Resume file
-    function testResumeFile(id) {
+    function testResumeFileValie(id) {
       if ($(id).value != null) {
         return true;
       }
@@ -82,7 +82,7 @@
       return false;
     }
 
-    function warnResumeFile(id) {
+    function warnResumeFileValid(id) {
       if (testResumeFile(id)) {
         var fileName = $(id).value;
         fileName = fileName.substring(fileName.length - 3); // Get the file extension
@@ -94,7 +94,7 @@
     }
 
     // First and last name
-    function testName(id) {
+    function testNameValid(id) {
       if ($(id).value.length > 0) {
         return true;
       }
@@ -102,14 +102,14 @@
       return false;
     }
 
-    function warnName(id) {
+    function warnNameValid(id) {
       if (!testName(id)) {
         alert("Please fill in your first and last name.");
       }
     }
 
     // Email
-    function testEmail(id) {
+    function testEmailValid(id) {
       if ($(id).value.length > 0) {
         return true;
       }
@@ -117,14 +117,13 @@
       return false;
     }
 
-    function warnEmail(id) {
+    function warnEmailValid(id) {
       if (!testEmail(id)) {
         alert("Please fill in your email.");
       }
     }
 
     // Phone
-
     function testPhoneValid(id) {
       if ($(id).value.length > 0) {
         return true;
@@ -133,7 +132,7 @@
       return false;
     }
 
-    function warnPhone(id) {
+    function warnPhoneValid(id) {
       if (testPhoneValid(id)) {
         var value = $(id).value;
 
@@ -230,7 +229,7 @@
         <label for="filResume">Attach resume</label><br>
         <table>
           <tr>
-            <td><input type="file" name="filResume" id="filResume" onchange="warnResumeFile('filResume')"/></td>
+            <td><input type="file" name="filResume" id="filResume" onchange="warnResumeFileValid('filResume')"/></td>
           </tr>
           <tr>
             <td><label>PDF or Word document only</label></td>
@@ -241,8 +240,8 @@
         <label class="required" for="txtFirstName">Name</label><br>
         <table>
           <tr>
-            <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10" onchange="warnName('txtFirstName')"/></td>
-            <td><input required type="text" name="txtLastName" id="txtLastName" size="20" onchange="warnName('txtLastName')"/></td>
+            <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10" onchange="warnNameValid('txtFirstName')"/></td>
+            <td><input required type="text" name="txtLastName" id="txtLastName" size="20" onchange="warnNameValid('txtLastName')"/></td>
           </tr>
           <tr>
             <td><label for="txtFirstName">First</label></td>
@@ -258,9 +257,9 @@
         <label class="required" for="txtPhone_0">Phone</label><br>
         <table>
           <tr>
-            <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3" onchange="warnPhone('txtPhone_0')"/></td>
-            <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3" onchange="warnPhone('txtPhone_1')"/></td>
-            <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4" onchange="warnPhone('txtPhone_2')"/></td>
+            <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3" onchange="warnPhoneValid('txtPhone_0')"/></td>
+            <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3" onchange="warnPhoneValid('txtPhone_1')"/></td>
+            <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4" onchange="warnPhoneValid('txtPhone_2')"/></td>
           </tr>
           <tr>
             <td><label for="txtPhone_0">(###)</label></td>
