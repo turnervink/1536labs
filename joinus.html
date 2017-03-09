@@ -31,15 +31,20 @@
 
     // Passed COMP 1536
     function testPassedCourseValid(id) {
-      if ($(id).value == "true") {
-        return true;
+      console.log("Testing course credit");
+      if ($(id).value == "false") {
+        //return true;
+        console.log("Did not pass");
+        return false;
       }
 
-      return false;
+      console.log("Did pass");
+      return true;
+      //return false;
     }
 
     function warnPassedCourseValid(id) {
-      if (!testPassedCourseValid(id)) {
+      if (testPassedCourseValid(id) == false) {
         alert("Please pass COMP 1536 before applying.");
       }
     }
@@ -193,7 +198,7 @@
 
         <!-- Position -->
         <label class="required" for="selPosition">Which position are you applying for?</label><br>
-        <select required name="selPosition" id="selPosition" onchange="warnPositionValid('selPosition')">
+        <select required name="selPosition" id="selPosition" onblur="warnPositionValid('selPosition')">
           <option value="">&nbsp;</option>
           <option value="project_manager">Project Manager</option>
           <option value="graphic_designer">Graphic Designer</option>
@@ -210,9 +215,9 @@
         <label class="required" for="txtStartDate_0">Earliest start date?</label><br>
         <table>
           <tr>
-            <td><input type="text" name="txtStartDate_0" id="txtStartDate_0" size="3" onchange="warnDateValid('txtStartDate_0')">&nbsp;/</td>
-            <td><input type="text" name="txtStartDate_1" id="txtStartDate_1" size="3" onchange="warnDateValid('txtStartDate_1')">&nbsp;/</td>
-            <td><input type="text" name="txtStartDate_2" id="txtStartDate_2" size="4" onchange="warnDateValid('txtStartDate_2')"></td>
+            <td><input type="text" name="txtStartDate_0" id="txtStartDate_0" size="3" onblur="warnDateValid('txtStartDate_0')">&nbsp;/</td>
+            <td><input type="text" name="txtStartDate_1" id="txtStartDate_1" size="3" onblur="warnDateValid('txtStartDate_1')">&nbsp;/</td>
+            <td><input type="text" name="txtStartDate_2" id="txtStartDate_2" size="4" onblur="warnDateValid('txtStartDate_2')"></td>
           </tr>
           <tr>
             <td><label>DD</label></td>
@@ -229,7 +234,7 @@
         <label for="filResume">Attach resume</label><br>
         <table>
           <tr>
-            <td><input type="file" name="filResume" id="filResume" onchange="warnResumeFileValid('filResume')"/></td>
+            <td><input type="file" name="filResume" id="filResume" onblur="warnResumeFileValid('filResume')"/></td>
           </tr>
           <tr>
             <td><label>PDF or Word document only</label></td>
@@ -240,8 +245,8 @@
         <label class="required" for="txtFirstName">Name</label><br>
         <table>
           <tr>
-            <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10" onchange="warnNameValid('txtFirstName')"/></td>
-            <td><input required type="text" name="txtLastName" id="txtLastName" size="20" onchange="warnNameValid('txtLastName')"/></td>
+            <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10" onblur="warnNameValid('txtFirstName')"/></td>
+            <td><input required type="text" name="txtLastName" id="txtLastName" size="20" onblur="warnNameValid('txtLastName')"/></td>
           </tr>
           <tr>
             <td><label for="txtFirstName">First</label></td>
@@ -257,9 +262,9 @@
         <label class="required" for="txtPhone_0">Phone</label><br>
         <table>
           <tr>
-            <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3" onchange="warnPhoneValid('txtPhone_0')"/></td>
-            <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3" onchange="warnPhoneValid('txtPhone_1')"/></td>
-            <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4" onchange="warnPhoneValid('txtPhone_2')"/></td>
+            <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3" onblur="warnPhoneValid('txtPhone_0')"/></td>
+            <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3" onblur="warnPhoneValid('txtPhone_1')"/></td>
+            <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4" onblur="warnPhoneValid('txtPhone_2')"/></td>
           </tr>
           <tr>
             <td><label for="txtPhone_0">(###)</label></td>
