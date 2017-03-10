@@ -93,9 +93,9 @@
       console.log("warnresum");
       if (testResumeFileValid(id)) {
         var fileName = $(id).value;
-        fileName = fileName.substring(fileName.length - 3); // Get the file extension
+        var documentEnding = fileName.substring(fileName.length - 4); // Get the file extension
 
-        if (!(fileName == "doc" || fileName == "docx" || fileName == "pdf")) {
+        if (!(documentEnding.substring(1) == "doc" || fileName == "docx" || documentEnding.substring(1) == "pdf")) {
           alert("Please upload a Word document or PDF for your resume.");
         }
       }
