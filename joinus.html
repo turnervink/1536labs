@@ -90,7 +90,6 @@
     }
 
     function warnResumeFileValid(id) {
-      console.log("warnresum");
       if (testResumeFileValid(id)) {
         var fileName = $(id).value;
         var documentEnding = fileName.substring(fileName.length - 4); // Get the file extension
@@ -128,7 +127,6 @@
     }
 
     function warnEmailValid(id) {
-      console.log("Testing email.");
       if (!testEmailValid(id)) {
         alert("Please fill in your email.");
       }
