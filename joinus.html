@@ -32,19 +32,15 @@
     // Passed COMP 1536
     function testPassedCourseValid(id) {
       console.log("Testing course credit");
-      if ($(id).value == "false") {
-        //return true;
-        console.log("Did not pass");
-        return false;
+      if ($(id).checked) {
+        return true;
       }
 
-      console.log("Did pass");
-      return true;
-      //return false;
+      return false;
     }
 
     function warnPassedCourseValid(id) {
-      if (testPassedCourseValid(id) == false) {
+      if (id == "radPassedWeb_1" && testPassedCourseValid(id)) {
         alert("Please pass COMP 1536 before applying.");
       }
     }
@@ -207,9 +203,10 @@
         </select><br><br>
 
         <!-- Credentials -->
+        <!-- TODO: Is it okay to use onchange here? onblur won't work. -->
         <label class="required" for="radPassedWeb_0">Passed Comp 1536?</label><br>
-        <input required checked type="radio" name="radPassedWeb" id="radPassedWeb_0" value="true" onchange="warnPassedCourseValid('radPassedWeb_0')">Yes<br>
-        <input type="radio" name="radPassedWeb" id="radPassedWeb_1" value="false" onchange="warnPassedCourseValid('radPassedWeb_1')">No<br><br>
+        <input required checked type="radio" name="radPassedWeb" id="radPassedWeb_0" value="true" onblur="warnPassedCourseValid('radPassedWeb_0')">Yes<br>
+        <input type="radio" name="radPassedWeb" id="radPassedWeb_1" value="false" onblur="warnPassedCourseValid('radPassedWeb_1')">No<br><br>
 
         <!-- Start date -->
         <label class="required" for="txtStartDate_0">Earliest start date?</label><br>
