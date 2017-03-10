@@ -31,14 +31,12 @@
 
     // Passed COMP 1536
     function testPassedCourseValid(id) {
-      console.log("Testing course credit");
-      if ($("radPassedWeb_1").checked) {
+      if ($(id).checked) {
         return true;
       }
       return false;
     }
     function warnPassedCourseValid(id) {
-      console.log("warnd");
       if (id == "radPassedWeb_1" && testPassedCourseValid(id)) {
         alert("Please pass COMP 1536 before applying.");
       }
@@ -243,7 +241,7 @@
         <label for="filResume">Attach resume</label><br>
         <table>
           <tr>
-            <td><input type="file" name="filResume" id="filResume" onchange="warnResumeFileValid('filResume')"/></td>
+            <td><input type="file" name="filResume" id="filResume" onblur="warnResumeFileValid('filResume')"/></td>
           </tr>
           <tr>
             <td><label>PDF or Word document only</label></td>
