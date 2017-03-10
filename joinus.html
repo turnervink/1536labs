@@ -157,20 +157,38 @@
     function warnPhoneValid(id) {
       if (testPhoneValid(id)) {
         var value = $(id).value;
+        var showAlert = true;
 
-        if (id == "txtPhone_0") {
-          if (!(value >= 100 && value <= 999)) { // Make sure area code is valid
-            alert("Please enter a valid area code");
-          }
-        } else if (id == "txtPhone_1") {
-          if (!(value >= 100 && value <= 999)) { // Make sure next three digits are valid
-            alert("Please enter a valid phone number");
-          }
-        } else if (id == "txtPhone_2") {
-          if (!(value >= 1000 && value <= 9999)) { // Make sure last four digits are valid
-            alert("Please enter a valid phone number");
-          }
+        var areaCode = $("txtPhone_0").value;
+        var threeDigits = $("txtPhone_1").value;
+        var fourDigits = $("txtPhone_2").value;
+
+        var areaCodeValid = (areaCode >= 100 && areaCode <= 999);
+        var threeDigitsValid = (threeDigits >= 100 && threeDigits <= 999);
+        var fourDigitsValid = (fourDigits >= 1000 && fourDigits <= 9999);
+
+        // if (id == "txtPhone_0") {
+        //   if (!(value >= 100 && value <= 999)) { // Make sure area code is valid
+        //     alert("Please enter a valid area code");
+        //   }
+        // } else if (id == "txtPhone_1") {
+        //   if (!(value >= 100 && value <= 999)) { // Make sure next three digits are valid
+        //     alert("Please enter a valid phone number");
+        //   }
+        // } else if (id == "txtPhone_2") {
+        //   if (!(value >= 1000 && value <= 9999)) { // Make sure last four digits are valid
+        //     alert("Please enter a valid phone number");
+        //   }
+        // }
+
+        if (areaCodeValid && threeDigitsValid && fourDigitsValid) {
+          showAlert = false;
         }
+
+      }
+
+      if (showAlert) {
+        alert("Please enter a valid phone number");
       }
     }
   </script>
