@@ -38,7 +38,9 @@
     }
     function warnPassedCourseValid(id) {
       if (id == "radPassedWeb_1" && testPassedCourseValid(id)) {
-        alert("Please pass COMP 1536 before applying.");
+        if (!$("radPassedWeb_0").checked) {
+          alert("Please pass COMP 1536 before applying.");
+        }
       }
     }
 
