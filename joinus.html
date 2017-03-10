@@ -54,25 +54,38 @@
     function warnDateValid(id) {
       if (testDateValid(id)) {
         var value = $(id).value;
-        var showAlert = false;
+        var showAlert = true;
 
-        if (id == "txtStartDate_0") {
-          if (!(value >= 1 && value <= 31)) { // Make sure day is valid
-            showAlert = true;
-          }
+        var day = $("txtStartDate_0").value;
+        var month = $("txtStartDate_1").value;
+        var year  = $("txtStartDate_2").value;
+
+        var dayValid = (day >= 1 && day <= 31);
+        var monthValid = (month >= 1 && month <= 12);
+        var yearValid = (year >= 2017 && year <= 2999);
+
+        // if (id == "txtStartDate_0") {
+        //   if (!(value >= 1 && value <= 31)) { // Make sure day is valid
+        //     showAlert = true;
+        //   }
+        // }
+        //
+        // if (id == "txtStartDate_1") {
+        //   if (!(value >= 1 && value <= 12)) { // Make sure month is valid
+        //     showAlert = true;
+        //   }
+        // }
+        //
+        // if (id == "txtStartDate_2") {
+        //   if (!(value >= 2017 && value <= 2999)) { // Make sure year is valid
+        //     showAlert = true;
+        //   }
+        // }
+
+        if (dayValid && monthValid && yearValid) {
+          showAlert = false;
         }
 
-        if (id == "txtStartDate_1") {
-          if (!(value >= 1 && value <= 12)) { // Make sure month is valid
-            showAlert = true;
-          }
-        }
-
-        if (id == "txtStartDate_2") {
-          if (!(value >= 2017 && value <= 2999)) { // Make sure year is valid
-            showAlert = true;
-          }
-        }
       }
 
       if (showAlert) {
