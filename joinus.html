@@ -95,7 +95,7 @@
         var fileName = $(id).value;
         var documentEnding = fileName.substring(fileName.length - 4); // Get the file extension
 
-        if (!(documentEnding.substring(1) == "doc" || fileName == "docx" || documentEnding.substring(1) == "pdf")) {
+        if (!(documentEnding.substring(1) == "doc" || documentEnding == "docx" || documentEnding.substring(1) == "pdf")) {
           alert("Please upload a Word document or PDF for your resume.");
         }
       }
