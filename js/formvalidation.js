@@ -14,6 +14,14 @@ function clearError(box, msg) {
   $(msg).innerHTML = "";
 }
 
+/*
+* Validates the form onsubmit.
+*
+* If a field is invalid it is highlighted red and an
+* error message is displayed. If the field becomes
+* valid but the form still cannot submit, the highlighting
+* and error message clear to prevent user confusion.
+*/
 function formValidate() {
   console.log("Validating form");
 
@@ -22,17 +30,17 @@ function formValidate() {
   var selPosition = testPositionValid("selPosition");
   var radPassedWeb = testPassedCourseValid("radPassedWeb_0");
   var txtStartDate = testDateValid();
-  var filResume = testResumeFileValid("filResume");
-  var txtFirstName = testNameValid("txtFirstName");
-  var txtLastName = testNameValid("txtLastName");
+  var filResume = testResumeFileValid_2("filResume");
+  var txtFirstName = testNameValid_2("txtFirstName");
+  var txtLastName = testNameValid_2("txtLastName");
   var txtEmail = testEmailValid("txtEmail");
-  var txtPhone = testPhoneValid();
+  var txtPhone = testPhoneValid_2();
 
   if (!selPosition) {
     console.log("Position invalid!");
     canSubmit = false;
     $("itmPosition").className = "error";
-    $("errPosition").innerHTML = "<p class='errMsg'>Please select a position</a>";
+    $("errPosition").innerHTML = "<p class='errMsg'>Please select a position</p>";
   } else {
     clearError("itmPosition", "errTxtStartDate");
   }
@@ -41,7 +49,7 @@ function formValidate() {
     console.log("Credentials invalid!");
     canSubmit = false;
     $("itmRadPassedWeb").className = "error";
-    $("errRadPassedWeb").innerHTML = "<p class='errMsg'>Please pass COMP 1536 before applying</a>";
+    $("errRadPassedWeb").innerHTML = "<p class='errMsg'>Please pass COMP 1536 before applying</p>";
   } else {
     clearError("itmRadPassedWeb", "errRadPassedWeb");
   }
@@ -50,7 +58,7 @@ function formValidate() {
     console.log("Date invalid!");
     canSubmit = false;
     $("itmTxtStartDate").className = "error";
-    $("errTxtStartDate").innerHTML = "<p class='errMsg'>Please enter a valid date</a>";
+    $("errTxtStartDate").innerHTML = "<p class='errMsg'>Please enter a valid date</p>";
   } else {
     clearError("itmTxtStartDate", "errTxtStartDate");
   }
@@ -59,7 +67,7 @@ function formValidate() {
     console.log("Resume invalid!");
     canSubmit = false;
     $("itmFilResume").className = "error";
-    $("errFilResume").innerHTML = "<p class='errMsg'>Please upload a PDF or DOC/DOCX</a>";
+    $("errFilResume").innerHTML = "<p class='errMsg'>Please upload a PDF or DOC/DOCX</p>";
   } else {
     clearError("itmFilResume", "errFilResume");
   }
@@ -68,7 +76,7 @@ function formValidate() {
     console.log("Fname invalid!");
     canSubmit = false;
     $("itmTxtName").className = "error";
-    $("errTxtName").innerHTML = "<p class='errMsg'>Please enter your name</a>";
+    $("errTxtName").innerHTML = "<p class='errMsg'>Please enter a valid name</p>";
   } else {
     clearError("itmTxtName", "errTxtName");
   }
@@ -77,7 +85,7 @@ function formValidate() {
     console.log("Lname invalid!");
     canSubmit = false;
     $("itmTxtName").className = "error";
-    $("errTxtStartDate").innerHTML = "<p class='errMsg'>Please enter your name/a>";
+    $("errTxtName").innerHTML = "<p class='errMsg'>Please enter a valid name</p>";
   } else {
     clearError("itmTxtName", "errTxtName");
   }
@@ -86,7 +94,7 @@ function formValidate() {
     console.log("Email invalid!");
     canSubmit = false;
     $("itmTxtEmail").className = "error";
-    $("errTxtEmail").innerHTML = "<p class='errMsg'>Please enter a valid email</a>";
+    $("errTxtEmail").innerHTML = "<p class='errMsg'>Please enter a valid email</p>";
   } else {
     clearError("itmTxtEmail", "errTxtEmail");
   }
@@ -95,7 +103,7 @@ function formValidate() {
     console.log("Phone invalid!");
     canSubmit = false;
     $("itmTxtPhone").className = "error";
-    $("errTxtPhone").innerHTML = "<p class='errMsg'>Please enter a valid phone number</a>";
+    $("errTxtPhone").innerHTML = "<p class='errMsg'>Please enter a valid phone number</p>";
   } else {
     clearError("itmTxtPhone", "errTxtPhone");
   }
@@ -150,6 +158,12 @@ function testResumeFileValid(id) {
   }
 }
 
+function testResumeFileValid_2(id) {
+  var pattern = /^.+\.(doc|docx|pdf)$/;
+
+  return pattern.test($(id).value);
+}
+
 // First and last name
 function testNameValid(id) {
   if ($(id).value.length > 0) {
@@ -157,6 +171,12 @@ function testNameValid(id) {
   }
 
   return false;
+}
+
+function testNameValid_2(id) {
+  var pattern = /^[A-z]+$/;
+
+  return pattern.test($(id).value);
 }
 
 // Email
@@ -168,6 +188,12 @@ function testEmailValid(id) {
   }
 
   return false;
+}
+
+function testEmailValid_2(id) {
+  var pattern = /^[A-z0-9._-]+@[A-z0-9._-]+\.[A-z0-9._-]{2,}$/;
+
+  return pattern.test($(id).value);
 }
 
 // Phone
@@ -185,4 +211,16 @@ function testPhoneValid() {
   }
 
   return false;
+}
+
+function testPhoneValid_2() {
+
+  var pattern = /^[0-9]{3}$/;
+  var pattern2 = /^[0-9]{4}$/
+
+  var areaCode = $("txtPhone_0").value;
+  var threeDigits = $("txtPhone_1").value;
+  var fourDigits = $("txtPhone_2").value;
+
+  return pattern.test(areaCode) && pattern.test(threeDigits) && pattern2.test(fourDigits);
 }
