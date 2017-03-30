@@ -6,192 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/form.css">
 
-  <script>
-    // Helper function
-    function $(id) {
-      var element = document.getElementById(id);
-
-      if (element == null) {
-        alert("Error: " + element + " does not exist!");
-      }
-
-      return element;
-    }
-
-    // Job position
-    function testPositionValid(id) {
-      return ($(id).selectedIndex != 0);
-    }
-
-    function warnPositionValid(id) {
-      if (!testPositionValid(id)) {
-        alert("You must select a position.");
-      }
-    }
-
-    // Passed COMP 1536
-    function testPassedCourseValid(id) {
-      if ($(id).checked) {
-        return true;
-      }
-      return false;
-    }
-    function warnPassedCourseValid(id) {
-      if (id == "radPassedWeb_1" && testPassedCourseValid(id)) {
-        alert("Please pass COMP 1536 before applying.");
-      }
-    }
-
-    // Earliest start date
-    function testDateValid(id) {
-      if ($("txtStartDate_0").value.length > 0 && $("txtStartDate_1").value.length > 0 && $("txtStartDate_2").value.length > 0) {
-        return true;
-      }
-
-      return false;
-    }
-
-    function warnDateValid(id) {
-      if (testDateValid(id)) {
-        var value = $(id).value;
-        var showAlert = true;
-
-        var day = $("txtStartDate_0").value;
-        var month = $("txtStartDate_1").value;
-        var year  = $("txtStartDate_2").value;
-
-        var dayValid = (day >= 1 && day <= 31);
-        var monthValid = (month >= 1 && month <= 12);
-        var yearValid = (year >= 2017 && year <= 2999);
-
-        // if (id == "txtStartDate_0") {
-        //   if (!(value >= 1 && value <= 31)) { // Make sure day is valid
-        //     showAlert = true;
-        //   }
-        // }
-        //
-        // if (id == "txtStartDate_1") {
-        //   if (!(value >= 1 && value <= 12)) { // Make sure month is valid
-        //     showAlert = true;
-        //   }
-        // }
-        //
-        // if (id == "txtStartDate_2") {
-        //   if (!(value >= 2017 && value <= 2999)) { // Make sure year is valid
-        //     showAlert = true;
-        //   }
-        // }
-
-        if (dayValid && monthValid && yearValid) {
-          showAlert = false;
-        }
-
-      }
-
-      if (showAlert) {
-        alert("Please enter a valid date (year must be between 2017 and 2999)");
-      }
-    }
-
-    // Resume file
-    function testResumeFileValid(id) {
-      if ($(id).value != null) {
-        return true;
-      }
-
-      return false;
-    }
-
-    function warnResumeFileValid(id) {
-      if (testResumeFileValid(id)) {
-        var fileName = $(id).value;
-        var documentEnding = fileName.substring(fileName.length - 4); // Get the file extension
-
-        if (!(documentEnding.substring(1) == "doc" || documentEnding == "docx" || documentEnding.substring(1) == "pdf")) {
-          alert("Please upload a Word document or PDF for your resume.");
-        }
-      }
-    }
-
-    // First and last name
-    function testNameValid(id) {
-      if ($(id).value.length > 0) {
-        return true;
-      }
-
-      return false;
-    }
-
-    function warnNameValid(id) {
-      if (!testNameValid(id)) {
-        alert("Please fill in your first and last name.");
-      }
-    }
-
-    // Email
-    function testEmailValid(id) {
-      var element = $(id).value;
-      var domainEnding = element.substring(element.length - 4);
-      if ($(id).value.length > 0 && (domainEnding == ".com" || domainEnding == ".org" || domainEnding.substring(1) == ".ca")) {
-        return true;
-      }
-
-      return false;
-    }
-
-    function warnEmailValid(id) {
-      if (!testEmailValid(id)) {
-        alert("Please fill in your email.");
-      }
-    }
-
-    // Phone
-    function testPhoneValid(id) {
-      if ($("txtPhone_0").value.length > 0 && $("txtPhone_1").value.length > 0 && $("txtPhone_2").value.length > 0) {
-        return true;
-      }
-
-      return false;
-    }
-
-    function warnPhoneValid(id) {
-      if (testPhoneValid(id)) {
-        var value = $(id).value;
-        var showAlert = true;
-
-        var areaCode = $("txtPhone_0").value;
-        var threeDigits = $("txtPhone_1").value;
-        var fourDigits = $("txtPhone_2").value;
-
-        var areaCodeValid = (areaCode >= 100 && areaCode <= 999);
-        var threeDigitsValid = (threeDigits >= 100 && threeDigits <= 999);
-        var fourDigitsValid = (fourDigits >= 1000 && fourDigits <= 9999);
-
-        // if (id == "txtPhone_0") {
-        //   if (!(value >= 100 && value <= 999)) { // Make sure area code is valid
-        //     alert("Please enter a valid area code");
-        //   }
-        // } else if (id == "txtPhone_1") {
-        //   if (!(value >= 100 && value <= 999)) { // Make sure next three digits are valid
-        //     alert("Please enter a valid phone number");
-        //   }
-        // } else if (id == "txtPhone_2") {
-        //   if (!(value >= 1000 && value <= 9999)) { // Make sure last four digits are valid
-        //     alert("Please enter a valid phone number");
-        //   }
-        // }
-
-        if (areaCodeValid && threeDigitsValid && fourDigitsValid) {
-          showAlert = false;
-        }
-
-      }
-
-      if (showAlert) {
-        alert("Please enter a valid phone number");
-      }
-    }
-  </script>
+  <script src="js/formvalidation.js"></script>
 </head>
 <body>
 
@@ -229,85 +44,105 @@
         you will be contacted shortly.
       </p>
 
-      <form action="http://webdevfoundations.net/scripts/formdemo.asp" method="post">
+      <form onsubmit="return formValidate()" action="http://webdevfoundations.net/scripts/formdemo.asp" method="post">
 
         <!-- Position -->
-        <label class="required" for="selPosition">Which position are you applying for?</label><br>
-        <select required name="selPosition" id="selPosition" onblur="warnPositionValid('selPosition')">
-          <option value="">&nbsp;</option>
-          <option value="project_manager">Project Manager</option>
-          <option value="graphic_designer">Graphic Designer</option>
-          <option value="web_dev">Web Developer</option>
-          <option value="database_admin">Database Administrator</option>
-        </select><br><br>
+        <div id="itmPosition">
+          <div id="errPosition"></div>
+          <label class="required" for="selPosition">Which position are you applying for?</label><br>
+          <select required name="selPosition" id="selPosition">
+            <option value="">&nbsp;</option>
+            <option value="project_manager">Project Manager</option>
+            <option value="graphic_designer">Graphic Designer</option>
+            <option value="web_dev">Web Developer</option>
+            <option value="database_admin">Database Administrator</option>
+          </select><br><br>
+        </div>
 
         <!-- Credentials -->
-        <!-- TODO: Is it okay to use onchange here? onblur won't work. -->
-        <label class="required" for="radPassedWeb_1">Passed Comp 1536?</label><br>
-        <input type="radio" name="radPassedWeb" id="radPassedWeb_0" value="true" onblur="warnPassedCourseValid('radPassedWeb_0')">Yes<br>
-        <input type="radio" name="radPassedWeb" id="radPassedWeb_1" value="false" onblur="warnPassedCourseValid('radPassedWeb_1')">No<br><br>
+        <div id="itmRadPassedWeb">
+          <div id="errRadPassedWeb"></div>
+          <label class="required" for="radPassedWeb_1">Passed Comp 1536?</label><br>
+          <input type="radio" name="radPassedWeb" id="radPassedWeb_0" value="true">Yes<br>
+          <input type="radio" name="radPassedWeb" id="radPassedWeb_1" value="false">No<br><br>
+        </div>
 
         <!-- Start date -->
-        <label class="required" for="txtStartDate_0">Earliest start date?</label><br>
-        <table>
-          <tr>
-            <td><input required type="text" name="txtStartDate_0" id="txtStartDate_0" size="3" onblur="warnDateValid('txtStartDate_0')">&nbsp;/</td>
-            <td><input required type="text" name="txtStartDate_1" id="txtStartDate_1" size="3" onblur="warnDateValid('txtStartDate_1')">&nbsp;/</td>
-            <td><input required type="text" name="txtStartDate_2" id="txtStartDate_2" size="4" onblur="warnDateValid('txtStartDate_2')"></td>
-          </tr>
-          <tr>
-            <td><label>DD</label></td>
-            <td><label>MM</label></td>
-            <td><label>YYYY</label></td>
-          </tr>
-        </table><br>
+        <div id="itmTxtStartDate">
+          <div id="errTxtStartDate"></div>
+          <label class="required" for="txtStartDate_0">Earliest start date?</label><br>
+          <table>
+            <tr>
+              <td><input required type="text" name="txtStartDate_0" id="txtStartDate_0" size="3">&nbsp;/</td>
+              <td><input required type="text" name="txtStartDate_1" id="txtStartDate_1" size="3">&nbsp;/</td>
+              <td><input required type="text" name="txtStartDate_2" id="txtStartDate_2" size="4"></td>
+            </tr>
+            <tr>
+              <td><label>DD</label></td>
+              <td><label>MM</label></td>
+              <td><label>YYYY</label></td>
+            </tr>
+          </table><br>
+        </div>
 
         <!-- URL -->
         <label for="txtPortfolio">Portfolio URL</label><br>
         <input type="text" name="txtPortfolio" id="txtPortfolio" size="50" /><br><br>
 
         <!-- Resume -->
-        <label for="filResume">Attach resume</label><br>
-        <table>
-          <tr>
-            <td><input type="file" name="filResume" id="filResume" onblur="warnResumeFileValid('filResume')"/></td>
-          </tr>
-          <tr>
-            <td><label>PDF or Word document only</label></td>
-          </tr>
-        </table><br>
+        <div id="itmFilResume">
+          <div id="errFilResume"></div>
+          <label for="filResume">Attach resume</label><br>
+          <table>
+            <tr>
+              <td><input type="file" name="filResume" id="filResume"/></td>
+            </tr>
+            <tr>
+              <td><label>PDF or Word document only</label></td>
+            </tr>
+          </table><br>
+        </div>
 
         <!-- Name -->
-        <label class="required" for="txtFirstName">Name</label><br>
-        <table>
-          <tr>
-            <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10" onblur="warnNameValid('txtFirstName')"/></td>
-            <td><input required type="text" name="txtLastName" id="txtLastName" size="20" onblur="warnNameValid('txtLastName')"/></td>
-          </tr>
-          <tr>
-            <td><label for="txtFirstName">First</label></td>
-            <td><label for="txtLastName">Last</label></td>
-          </tr>
-        </table><br>
+        <div id="itmTxtName">
+          <div id="errTxtName"></div>
+          <label class="required" for="txtFirstName">Name</label><br>
+          <table>
+            <tr>
+              <td><input required type="text" name="txtFirstName" id="txtFirstName" size="10"/></td>
+              <td><input required type="text" name="txtLastName" id="txtLastName" size="20"/></td>
+            </tr>
+            <tr>
+              <td><label for="txtFirstName">First</label></td>
+              <td><label for="txtLastName">Last</label></td>
+            </tr>
+          </table><br>
+        </div>
 
         <!-- Email -->
-        <label class="required" for="txtEmail">Email</label><br>
-        <input required type="text" name="txtEmail" id="txtEmail" size="50" onblur="warnEmailValid('txtEmail')"/><br><br>
+        <div id="itmTxtEmail">
+          <div id="errTxtEmail"></div>
+          <label class="required" for="txtEmail">Email</label><br>
+          <input required type="text" name="txtEmail" id="txtEmail" size="50"/><br><br>
+        </div>
 
         <!-- Phone number -->
-        <label class="required" for="txtPhone_0">Phone</label><br>
-        <table>
-          <tr>
-            <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3" onblur="warnPhoneValid('txtPhone_0')"/></td>
-            <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3" onblur="warnPhoneValid('txtPhone_1')"/></td>
-            <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4" onblur="warnPhoneValid('txtPhone_2')"/></td>
-          </tr>
-          <tr>
-            <td><label for="txtPhone_0">(###)</label></td>
-            <td><label for="txtPhone_1">###</label></td>
-            <td><label for="txtPhone_2">####</label></td>
-          </tr>
-        </table><br>
+        <div id="itmTxtPhone">
+          <div id="errTxtPhone"></div>
+          <label class="required" for="txtPhone_0">Phone</label><br>
+          <table>
+            <tr>
+              <td><input required type="text" name="txtPhone_0" id="txtPhone_0" size="3"/></td>
+              <td><input required type="text" name="txtPhone_1" id="txtPhone_1" size="3"/></td>
+              <td><input required type="text" name="txtPhone_2" id="txtPhone_2" size="4"/></td>
+            </tr>
+            <tr>
+              <td><label for="txtPhone_0">(###)</label></td>
+              <td><label for="txtPhone_1">###</label></td>
+              <td><label for="txtPhone_2">####</label></td>
+            </tr>
+          </table><br>
+        </div>
 
         <!-- More info -->
         <label id="more_info_label" for="taComments">Any additional information for us</label><br>
