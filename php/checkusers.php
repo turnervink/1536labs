@@ -8,11 +8,11 @@ $file = fopen($users, "r");
 while (!feof($file) && !$isRegistered) {
   $line = preg_split("/ /", trim(fgets($file)));
 
-  $first = $_POST['txtFirstName'];
-  $last = $_POST['txtLastName'];
-  $email = $_POST['txtEmail'];
+  $first = strtolower($_POST['txtFirstName']);
+  $last = strtolower($_POST['txtLastName']);
+  $email = strtolower($_POST['txtEmail']);
 
-  if ($first == $line[0] && $last == $line[1] && $email == $line[2]) {
+  if ($first == strtolower($line[0]) && $last == strtolower($line[1]) && $email == strtolower($line[2])) {
     $isRegistered = true;
   }
 
