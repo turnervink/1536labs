@@ -18,3 +18,13 @@ table {
   font-size: 14px;
   color: rgb(12, 102, 168);
 }
+
+div.error {
+  display: block;
+  border: 1px solid #F9B9B2;
+  background-color: #FFDFDF;
+}
+
+.errMsg {
+  font-size: 0.75em;
+}
